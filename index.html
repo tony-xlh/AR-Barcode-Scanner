@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  </head>
+  <style>
+    video {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <body>
+    <video muted autoplay="autoplay" playsinline="playsinline" webkit-playsinline></video>
+    <a-scene>
+      <a-entity position="0 0 -4" geometry="primitive: plane; width: 5" material="color: #0000FF" text="value: Hello World; color: white;"></a-entity>
+    </a-scene>
+    
+  </body>
+  <script>
+  // grab the video element
+  const video = document.querySelector('video');
+  // this object needs to be an argument of getUserMedia
+  const constraints = {
+     video: true
+  };
+  // when you grab the stream - display it on the <video> element
+  navigator.mediaDevices.getUserMedia(constraints).
+      then((stream) => {video.srcObject = stream});
+  </script>
+</html>
